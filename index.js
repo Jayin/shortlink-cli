@@ -5,18 +5,24 @@
 var program = require('commander');
 var packageJSON = require('./package.json');
 var baidu = require('./lib/baidu');
+var weibo = require('./lib/weibo');
 var restore = require('./lib/restore');
+
 
 program
     .command('gen [longurl]')
-    .description('生成短连接')
+    .description('生成短连接, 默认用百度短连接服务')
     .option("--baidu", "使用百度短连接服务 http://dwz.cn/")
+    .option("--weibo", "使用新浪微博短连接服务 http://open.weibo.com/wiki/2/short_url/shorten")
     .action(function(longurl, options) {
-        var create = options.baidu || baidu;
+        var create = baidu;
+        if (options.weibo){
+            create = weibo;
+        }
         create(longurl, function(err, shortlink) {
             if (err) {
                 console.log(err);
-                return
+                return;
             }
             console.log(shortlink);
         });
