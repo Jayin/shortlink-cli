@@ -5,7 +5,7 @@
 var program = require('commander');
 var packageJSON = require('./package.json');
 var baidu = require('./lib/baidu');
-var restore = require('./lib/restore')
+var restore = require('./lib/restore');
 
 program
     .command('gen [longurl]')
@@ -18,7 +18,7 @@ program
                 console.log(err);
                 return
             }
-            console.log(shortlink)
+            console.log(shortlink);
         });
     });
 
@@ -27,12 +27,12 @@ program
     .command('restore [shorturl]')
     .description('还原短连接到长链接')
     .action(function(shorturl, options) {
-        restore(shorturl, function(err, longurl){
+        restore(shorturl, function(err, longurl) {
             if (err) {
                 console.log(err);
                 return;
             }
-            console.log(longurl)
+            console.log(longurl);
         })
     });
 
