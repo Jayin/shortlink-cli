@@ -12,9 +12,15 @@ npm install -g shortlink-cli
 
 ```bash
 # 生成短链接
-shortlink gen [options] longurl
+shortlink gen [options] http://www.v2ex.com/
+# =>
+http://dwz.cn/v2extiger
+
 # 还原短链接
-shortlink restore shorturl
+shortlink restore http://dwz.cn/v2extiger
+# =>
+ http://www.v2ex.com/
+```
 ```
 
 #### options
